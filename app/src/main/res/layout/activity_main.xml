@@ -7,48 +7,35 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <EditText
-        android:id="@+id/textToSave"
+
+    <Button
+        android:id="@+id/task1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:autofillHints=""
-        android:hint="@string/TextToSave"
-        android:inputType="text"
+        android:text="Задание 1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="@string/buttonSaveText"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textToSave" />
-
-    <Button
-        android:id="@+id/buttonRead"
+        android:id="@+id/task2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="@string/buttonReadText"
+        android:text="Задание 2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSave" />
+        app:layout_constraintTop_toBottomOf="@+id/task1" />
 
-    <EditText
-        android:id="@+id/textFromFile"
+    <Button
+        android:id="@+id/task3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:autofillHints=""
-        android:hint="@string/TextFromFile"
-        android:inputType="text"
+        android:layout_marginTop="50dp"
+        android:text="Задание 3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonRead" />
+        app:layout_constraintTop_toBottomOf="@+id/task2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
