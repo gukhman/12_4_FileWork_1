@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FileWork</string>
+    <string name="TextToSave">Введите текст для записи в файл</string>
+    <string name="buttonSaveText">Записать в файл</string>
+    <string name="buttonReadText">Прочитать из файла</string>
+    <string name="TextFromFile">Здесь появится текст из файла</string>
+</resources>
