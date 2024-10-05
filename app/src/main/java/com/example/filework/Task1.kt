@@ -1,7 +1,6 @@
 package com.example.filework
 
 import android.os.Bundle
-import android.os.Environment
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
@@ -9,9 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.google.android.material.snackbar.Snackbar
-import java.io.File
-import java.io.IOException
+
 
 class Task1 : AppCompatActivity() {
 
@@ -20,6 +17,8 @@ class Task1 : AppCompatActivity() {
     private lateinit var buttonRead: Button
     private lateinit var textToSave: EditText
     private lateinit var textFromFile: EditText
+
+    private val fileName = "task1"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,68 +30,24 @@ class Task1 : AppCompatActivity() {
             insets
         }
 
-        toolbar = findViewById(R.id.toolbar)
+        toolbar = findViewById(R.id.toolbarTask1)
         setSupportActionBar(toolbar)
         // Настройка Action Bar с кнопкой "Назад"
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        buttonSave = findViewById(R.id.buttonSave)
+        buttonSave = findViewById(R.id.buttonSaveTask1)
         buttonRead = findViewById(R.id.buttonRead)
         textToSave = findViewById(R.id.textToSave)
         textFromFile = findViewById(R.id.textFromFile)
 
         buttonSave.setOnClickListener {
-            writeToFileInDownload("example.txt", textToSave.text.toString())
+            writeToFileInDownload(fileName, textToSave.text.toString())
         }
 
         buttonRead.setOnClickListener {
-            val text = readFromFile("example.txt")
+            val text = readFromFile(fileName)
             textFromFile.setText(text)
         }
-    }
-
-    private fun writeToFileInDownload(fileName: String, content: String) {
-        // Определяем каталог Downloads
-        val downloadsDirectory =
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-
-        // Создаем файл
-        val file = File(downloadsDirectory, fileName)
-
-        try {
-            // Записываем текст в файл
-            file.writeText(content)
-
-            // Уведомляем пользователя об успешной записи
-            showSnackbar("Файл записан: ${file.absolutePath}")
-        } catch (e: IOException) {
-            e.printStackTrace()
-            showSnackbar("Ошибка записи файла: ${e.message}")
-        }
-    }
-
-    private fun showSnackbar(message: String) {
-        val rootView = findViewById<android.view.View>(android.R.id.content)
-        Snackbar.make(rootView, message, Snackbar.LENGTH_LONG).show()
-    }
-
-    private fun readFromFile(fileName: String): String {
-        // Определяем каталог Downloads
-        val downloadsDirectory =
-            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)
-
-        // Создаем объект File для указанного файла
-        var text = ""
-        val file = File(downloadsDirectory, fileName)
-        if (file.exists()) {
-            try {
-                text = file.readText()
-                showSnackbar("Файл прочитан")
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
-        }
-        return text
     }
 
     override fun onOptionsItemSelected(item: android.view.MenuItem): Boolean {
